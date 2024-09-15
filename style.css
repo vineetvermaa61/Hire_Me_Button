@@ -1,0 +1,59 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+#wrapper{
+    /* height: 100vh; */
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* bilkul center mein lane ke liye */
+.container{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn{
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 12.8px 36.8px;
+    cursor: pointer;
+    color: white;
+    background-color: #e84949;
+    border: none;
+    /* box-shadow: 8px 5px 5px 0.2px rgba(0, 0, 0, 0.155); */
+    box-shadow: 5px 5px 7px 0px #0000003f;
+
+    position: relative;
+    z-index: 1;
+}
+
+/* actual content ke pehle/left mein ye property rahengi, color overlap karana hai isliye position absolute rakhi hai aur nearest neighbour ki position relative karni padegi */
+.btn::before{
+    content: "";
+    background-color: #1f1f1f;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* shuru mein x-axis ke around scaling 0 rahegi */
+    transform: scaleX(0);
+    /* left se transform hona start hoga */
+    transform-origin: left;
+    transition: all 0.8s;
+    z-index: -1;
+}
+
+/* btn par jab hover karenge before wale ke sath */
+.btn:hover::before{
+    transform: scaleX(1);
+}
+
